@@ -9,22 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var click_me_component_1 = require('./click-me.component');
-var app_component_1 = require('./app.component');
-var keyup_component_1 = require('./keyup.component');
-var AppModule = (function () {
-    function AppModule() {
+var KeyUpComponent_v1 = (function () {
+    function KeyUpComponent_v1() {
+        this.values = '';
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent, click_me_component_1.ClickMeComponent, keyup_component_1.KeyUpComponent_v1],
-            bootstrap: [app_component_1.AppComponent],
+    // without strong typing
+    KeyUpComponent_v1.prototype.onKey = function (value) {
+        this.values += value + ' | ';
+    };
+    KeyUpComponent_v1 = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'keyup',
+            template: "\n    <input #box  (keyup.enter)=\"onKey(box.value)\" (blur)=\"values=box.value\">\n    <p>{{values}}</p>\n    "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], KeyUpComponent_v1);
+    return KeyUpComponent_v1;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.KeyUpComponent_v1 = KeyUpComponent_v1;
+//# sourceMappingURL=keyup.component.js.map

@@ -21,10 +21,15 @@ var AppComponent = (function () {
         ];
         this.myHero = this.heroes[0];
     }
+    AppComponent.prototype.addHero = function (newHero) {
+        if (newHero) {
+            this.heroes.push(new hero_1.Hero(23, newHero));
+        }
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <h2>My favorite hero is: {{myHero.name}}</h2>\n    <p>Heroes</p>\n    <ul>\n      <li *ngFor = \"let hero of heroes\">\n        {{hero.name}}\n      </li>\n    </ul>\n    <p *ngIf=\"heroes.length > 3\">There are many heroes!</p>\n\n    "
+            template: "\n    <h1>{{title}}</h1>\n    <h2>My favorite hero is: {{myHero.name}}</h2>\n    <p>Heroes</p>\n     <input #newHero\n      (keyup.enter)=\"addHero(newHero.value)\"\n      (blur)=\"addHero(newHero.value); newHero.value='' \">\n\n    <button (click)=addHero(newHero.value)>Add</button>\n\n    <ul>\n      <li *ngFor = \"let hero of heroes\">\n        {{hero.name}}\n      </li>\n    </ul>\n    <p *ngIf=\"heroes.length > 3\">There are many heroes!</p>\n    <click-me></click-me>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
